@@ -47,20 +47,24 @@ function draw() {
 	let x = length * sin(angle);
 	let y = length * cos(angle);
 
+	// draw pendulum trail
 	prevPoints.unshift(createVector(x, y));
 	if (prevPoints.length > 40) {
 		prevPoints.pop();
 	}
 
-	// draw pendulum trail
 	push();
-	for (let i = 0, n = 240; i < prevPoints.length - 1; i++, n -= 4) {
-		stroke(n);
+	for (
+		let i = prevPoints.length - 1, gb = 240 - prevPoints.length * 4;
+		i > 1;
+		i--, gb += 4
+	) {
+		stroke(0, gb, gb);
 		line(
 			prevPoints[i].x,
 			prevPoints[i].y,
-			prevPoints[i + 1].x,
-			prevPoints[i + 1].y
+			prevPoints[i - 1].x,
+			prevPoints[i - 1].y
 		);
 	}
 	pop();
