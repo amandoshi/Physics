@@ -1,4 +1,4 @@
-// let ball;
+let audio;
 let balls = new Array();
 
 function setup() {
@@ -10,6 +10,10 @@ function setup() {
 	balls.push(new Ball(width / 2 + 90, height / 2 - 250, [0, 255, 0]));
 	balls.push(new Ball(width / 2 + 170, height / 2 + 30, [0, 0, 255]));
 	balls.push(new Ball(width / 2 - 170, height / 2 - 200, [0, 255, 255]));
+
+	// define audio
+	audio = new Audio("click.wav");
+	audio.load();
 }
 
 function draw() {
